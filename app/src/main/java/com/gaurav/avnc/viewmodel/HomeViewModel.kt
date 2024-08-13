@@ -29,6 +29,7 @@ class HomeViewModel(app: Application) : BaseViewModel(app) {
         }
     }
 
+
     /**
      * Used to find new servers.
      */

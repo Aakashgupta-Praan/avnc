@@ -47,6 +47,7 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
     private val tabs = ServerTabs(this)
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.App_Theme)
         super.onCreate(savedInstanceState)
@@ -71,6 +72,31 @@ class HomeActivity : AppCompatActivity() {
         viewModel.discovery.servers.observe(this) { updateDiscoveryBadge(it) }
         viewModel.serverProfiles.observe(this) { updateShortcuts(it) }
 
+
+
+        if (getPreferences(MODE_PRIVATE).getBoolean("is_first_run", true)) {
+            /*
+             * your code here
+             */
+            val prefillEntry = ServerProfile()
+
+            prefillEntry.host= "10.42.0.1"
+            prefillEntry.port = 5900
+            prefillEntry.name = "backpack"
+            prefillEntry.password = "123456"
+            prefillEntry.gestureStyle = "touchpad"
+            prefillEntry.fConnectOnAppStart = true
+            Log.d("TAG", "prefill entry here ")
+
+            viewModel.saveProfile(prefillEntry)
+
+
+            getPreferences(MODE_PRIVATE).edit().putBoolean("is_first_run", false).apply();
+        }
+
+
+        Log.d("TAG", "prefill entry saved ")
+
         setupSplashTheme()
         showWelcomeMsg()
         maybeAutoConnect(savedInstanceState == null)
@@ -93,8 +119,8 @@ class HomeActivity : AppCompatActivity() {
     private fun onMenuItemSelected(itemId: Int): Boolean {
         when (itemId) {
             R.id.settings -> showSettings()
-            R.id.about -> showAbout()
-            R.id.report_bug -> launchBugReport()
+//            R.id.about -> showAbout()
+//            R.id.report_bug -> launchBugReport()
             else -> return false
         }
         binding.drawerLayout.close()
