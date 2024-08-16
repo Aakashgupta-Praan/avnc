@@ -7,7 +7,7 @@
   -->
 
 <resources>
-    <string name="app_name" translatable="false">Praan 3d mapping</string>
+    <string name="app_name" translatable="false">Praan 3D Mapping</string>
 
     <string name="title_add_server_profile">Add server</string>
     <string name="title_edit_server_profile">Edit server</string>

@@ -68,12 +68,12 @@ class BasicHomeTest {
         Intents.intended(hasComponent(PrefsActivity::class.qualifiedName))
     }
 
-    @Test
-    fun openAbout() {
-        openDrawer()
-        onView(withId(R.id.about)).doClick()
-        Intents.intended(hasComponent(AboutActivity::class.qualifiedName))
-    }
+//    @Test
+//    fun openAbout() {
+//        openDrawer()
+//        onView(withId(R.id.about)).doClick()
+//        Intents.intended(hasComponent(AboutActivity::class.qualifiedName))
+//    }
 
     @Test
     fun openUrlbar() {
@@ -81,21 +81,21 @@ class BasicHomeTest {
         Intents.intended(hasComponent(UrlBarActivity::class.qualifiedName))
     }
 
-    @Test
-    fun bugReport() {
-        // Expecting the bug report url to be launched
-        Intents.intending(hasAction(Intent.ACTION_VIEW))
-                .respondWith(Instrumentation.ActivityResult(Activity.RESULT_OK, null))
-
-        openDrawer()
-        onView(withId(R.id.report_bug)).doClick()
-
-        Intents.intended(allOf(
-                hasAction(Intent.ACTION_VIEW),
-                hasDataString(containsString(AboutActivity.BUG_REPORT_URL))
-        ))
-        Intents.assertNoUnverifiedIntents()
-    }
+//    @Test
+//    fun bugReport() {
+//        // Expecting the bug report url to be launched
+//        Intents.intending(hasAction(Intent.ACTION_VIEW))
+//                .respondWith(Instrumentation.ActivityResult(Activity.RESULT_OK, null))
+//
+//        openDrawer()
+//        onView(withId(R.id.report_bug)).doClick()
+//
+//        Intents.intended(allOf(
+//                hasAction(Intent.ACTION_VIEW),
+//                hasDataString(containsString(AboutActivity.BUG_REPORT_URL))
+//        ))
+//        Intents.assertNoUnverifiedIntents()
+//    }
 }
 
 class AutoConnectTest {

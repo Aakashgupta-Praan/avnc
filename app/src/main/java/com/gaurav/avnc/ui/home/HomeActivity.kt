@@ -84,8 +84,11 @@ class HomeActivity : AppCompatActivity() {
             prefillEntry.port = 5900
             prefillEntry.name = "backpack"
             prefillEntry.password = "123456"
-            prefillEntry.gestureStyle = "touchpad"
+            prefillEntry.gestureStyle = "touchscreen"
             prefillEntry.fConnectOnAppStart = true
+            prefillEntry.imageQuality = 0
+            prefillEntry.useRawEncoding = true
+            prefillEntry.screenOrientation = "landscape"
             Log.d("TAG", "prefill entry here ")
 
             viewModel.saveProfile(prefillEntry)
